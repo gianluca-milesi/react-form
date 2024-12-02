@@ -1,6 +1,7 @@
-import PostCard from "../components/PostCard/PostCard"
-import posts from "../data/posts.js"
-import Tags from "../components/Tags/Tags.jsx"
+import style from "./Main.module.css"
+import PostCard from "../../components/PostCard/PostCard.jsx"
+import posts from "../../data/posts.js"
+import Tags from "../../components/Tags/Tags.jsx"
 
 function Main() {
 
@@ -24,6 +25,15 @@ function Main() {
     return (
         <>
             <main>
+                <section className={style.form_section}>
+                    <div className="container">
+                        <p>Inserisci un nuovo post</p>
+                        <form action="">
+                            <input type="text" placeholder="Titolo del post"/>
+                            <input type="submit" />
+                        </form>
+                    </div>
+                </section>
                 <div className="container">
                     <div className="row">
                         {publishedPosts.map((post) => (
