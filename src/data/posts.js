@@ -2,7 +2,7 @@ import imageGhepardo from "../assets/ghepardo.jpg"
 import imageProcione from "../assets/procione.jpeg"
 import imageLeone from "../assets/leone.jpg"
 
-export const posts = [
+const posts = [
 	{
 		id: 1,
 		title: 'Titolo del Post',

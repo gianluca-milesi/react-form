@@ -1,29 +1,30 @@
-.tags {
+.tag_list {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .tag_item {
-    background-color: violet;
-    padding: 6px 8px;
+    color: rgb(0, 0, 0);
+    line-height: 1.5;
+    padding: 0 0.5rem;
     border-radius: 10px;
-    color: white;
 }
 
 
 /* UTILITIES */
-.tag_html {
-    color: red;
+.html {
+    background-color: cornflowerblue;
 }
 
-.tag_css {
-    color: blue;
+.js {
+    background-color: gold;
 }
 
-.tag_js {
-    color: yellow;
+.css {
+    background-color: mediumslateblue;
 }
 
-.tag_php {
-    color: orange;
+.php {
+    background-color: cornflowerblue;
 }

@@ -1,79 +1,78 @@
 import style from "./Main.module.css"
-import PostCard from "../../components/PostCard/PostCard.jsx"
-// import posts from "../../data/posts.js"
-import initialPosts from "../../data/posts.js"
-import Tags from "../../components/Tags/Tags.jsx"
 import { useState } from "react"
+import initialPosts from "../../data/posts.js"
+import Card from "../../components/Card/Card.jsx"
+import Tags from "../../components/Tags/Tags.jsx"
+
 
 function Main() {
 
-    // const publishedPosts = posts.filter((post) => post.published === true)
-
-
+    //Creo lo stato dei post partendo dai dati iniziali (posts.js)
     const [posts, setPosts] = useState(initialPosts)
-    const [title, setTitle] = useState("Pinguino")
+    const [title, setTitle] = useState("")
 
-    function onSubmit(event) {
+    function submit(event) {
         event.preventDefault()
 
         const newTitle = title.trim()
-
         const newPost = {
             id: Date.now(),
             title: newTitle,
             image: undefined,
-            content: "content",
+            content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit animi unde quasi enim non esse ratione voluptas voluptate, officiis veritatis magni blanditiis possimus nobis cum id inventore corporis deserunt hic.",
             tags: [],
             published: true
         }
 
         setPosts([...posts, newPost])
-        // console.log(newPost)
+    }
+
+    function change(event) {
+        setTitle(event.target.value)
     }
 
 
-    const tags = []
-    posts.forEach(post => {
-
+    //Tags senza ripetizioni
+    const filteredTags = []
+    initialPosts.forEach(post => {
         const postTags = post.tags
-        // console.log(postTags)
 
-        postTags.forEach((tag) => {
-            if (!tags.includes(tag)) {
-                tags.push(tag)
+        postTags.forEach(tag => {
+            if (!filteredTags.includes(tag)) {
+                filteredTags.push(tag)
             }
         })
     })
 
 
     return (
-        <>
-            <main>
-                <section className={style.form_section}>
-                    <div className="container">
-                        <p>Inserisci un nuovo post</p>
-                        <form onSubmit={onSubmit} action="">
-                            <input type="text" placeholder="Titolo del post" onChange={(event) => setTitle(event.target.value)} value={title} />
-                            <input type="submit" value="Aggiungi" />
-                        </form>
-                    </div>
-                </section>
+        <main>
+            <section className={style.tags}>
+                <div className="container">
+                    <Tags tags={filteredTags} />
+                </div>
+            </section>
+            <section className={style.form}>
+                <div className="container">
+                    <h3>Crea un nuovo post</h3>
+                    <form onSubmit={submit}>
+                        <input type="text" placeholder="Inserisci il titolo" className={style.input_title} onChange={change} value={title} />
+                        <input type="submit" className={style.submit} value="Aggiungi" />
+                    </form>
+                </div>
+            </section>
+            <section className={style.cards}>
                 <div className="container">
                     <div className="row">
-                        {posts.map((post) => (
-                            <div key={post.id} className="col-6">
-                                <PostCard title={post.title} image={post.image} content={post.content} tags={post.tags} />
+                        {posts.filter(post => post.published === true).map(post => (
+                            <div key={post.id} className="col-4">
+                                <Card item={post} />
                             </div>
                         ))}
                     </div>
                 </div>
-                <div className="container">
-                    <div className="row">
-                        <Tags tags={tags} />
-                    </div>
-                </div>
-            </main>
-        </>
+            </section>
+        </main>
     )
 }
 
