@@ -25,10 +25,15 @@ function Main() {
         }
 
         setPosts([...posts, newPost])
+        setTitle("")
     }
 
     function change(event) {
         setTitle(event.target.value)
+    }
+
+    function deletePost(id) {
+        setPosts(posts.filter(post => post.id !== id))
     }
 
 
@@ -66,7 +71,7 @@ function Main() {
                     <div className="row">
                         {posts.filter(post => post.published === true).map(post => (
                             <div key={post.id} className="col-4">
-                                <Card item={post} />
+                                <Card item={post} deleteItem={deletePost}/>
                             </div>
                         ))}
                     </div>
