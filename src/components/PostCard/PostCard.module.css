@@ -1,0 +1,49 @@
+.card {
+    background-color: white;
+    border-radius: 14px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    margin: 10px;
+}
+
+.thumbnail {
+    width: 100%;
+    border-radius: 14px 14px 0 0;
+}
+
+.card_body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.tags {
+    display: flex;
+    gap: 8px;
+}
+
+.tag_item {
+    background-color: violet;
+    padding: 6px 8px;
+    border-radius: 10px;
+    color: white;
+}
+
+
+/* UTILITIES */
+.tag_html {
+    color: red;
+}
+
+.tag_css {
+    color: blue;
+}
+
+.tag_js {
+    color: yellow;
+}
+
+.tag_php {
+    color: orange;
+}

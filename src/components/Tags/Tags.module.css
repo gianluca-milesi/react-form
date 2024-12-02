@@ -1,0 +1,29 @@
+.tags {
+    display: flex;
+    gap: 8px;
+}
+
+.tag_item {
+    background-color: violet;
+    padding: 6px 8px;
+    border-radius: 10px;
+    color: white;
+}
+
+
+/* UTILITIES */
+.tag_html {
+    color: red;
+}
+
+.tag_css {
+    color: blue;
+}
+
+.tag_js {
+    color: yellow;
+}
+
+.tag_php {
+    color: orange;
+}
