@@ -1,16 +1,16 @@
 import style from "./Main.module.css"
 import PostCard from "../../components/PostCard/PostCard.jsx"
-import posts from "../../data/posts.js"
+// import posts from "../../data/posts.js"
 import initialPosts from "../../data/posts.js"
 import Tags from "../../components/Tags/Tags.jsx"
 import { useState } from "react"
 
 function Main() {
 
-    const publishedPosts = posts.filter((post) => post.published === true)
+    // const publishedPosts = posts.filter((post) => post.published === true)
 
 
-    const [allPosts, setAllPosts] = useState(initialPosts)
+    const [posts, setPosts] = useState(initialPosts)
     const [title, setTitle] = useState("Pinguino")
 
     function onSubmit(event) {
@@ -19,6 +19,7 @@ function Main() {
         const newTitle = title.trim()
 
         const newPost = {
+            id: Date.now(),
             title: newTitle,
             image: undefined,
             content: "content",
@@ -26,9 +27,8 @@ function Main() {
             published: true
         }
 
-        setAllPosts([...publishedPosts, newPost])
+        setPosts([...posts, newPost])
         // console.log(newPost)
-        console.log(allPosts)
     }
 
 
@@ -60,7 +60,7 @@ function Main() {
                 </section>
                 <div className="container">
                     <div className="row">
-                        {publishedPosts.map((post) => (
+                        {posts.map((post) => (
                             <div key={post.id} className="col-6">
                                 <PostCard title={post.title} image={post.image} content={post.content} tags={post.tags} />
                             </div>
